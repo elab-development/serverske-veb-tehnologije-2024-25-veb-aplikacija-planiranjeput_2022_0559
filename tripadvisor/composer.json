@@ -1,5 +1,4 @@
-{
-    "name": "laravel/laravel",
+{"name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
@@ -65,3 +64,4 @@
     "minimum-stability": "stable",
     "prefer-stable": true
 }
+    
