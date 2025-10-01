@@ -30,3 +30,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     });
+    
+
+    Route::resource('destinations', DestinationController::class)
+        ->only(['store', 'update', 'destroy']);
