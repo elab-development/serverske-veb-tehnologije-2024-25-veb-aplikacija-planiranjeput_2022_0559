@@ -79,9 +79,7 @@ class ReviewController extends Controller
         ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Review $review)
     {
         //
