@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,28 +23,25 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-
-
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-
 
 Route::get('/destinations', [DestinationController::class, 'index']);
 Route::get('/destinations/{destination}', [DestinationController::class, 'show']);
 
 Route::get('/places', [PlaceController::class, 'index']);
+Route::get('/places/{place}/reviews', [ReviewController::class, 'index']);
 Route::get('/places/{place}', [PlaceController::class, 'show']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    });
-
 
     Route::resource('destinations', DestinationController::class)
         ->only(['store', 'update', 'destroy']);
 
-     Route::resource('places', PlaceController::class)
+    Route::resource('places', PlaceController::class)
         ->only(['store', 'update', 'destroy']);
 
-    
+    Route::resource('reviews', ReviewController::class)
+        ->only(['store', 'destroy']);
+});
