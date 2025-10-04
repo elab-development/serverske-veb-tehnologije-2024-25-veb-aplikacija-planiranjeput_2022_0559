@@ -30,7 +30,8 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-'tripadvisor16' => [
+ 
+    'tripadvisor16' => [
         'key'  => env('RAPIDAPI_TRIP16_KEY'),
         'host' => env('RAPIDAPI_TRIP16_HOST'),
         'base' => env('RAPIDAPI_TRIP16_BASE'),
@@ -40,6 +41,11 @@ return [
         'key'  => env('RAPIDAPI_TRCOM1_KEY'),
         'host' => env('RAPIDAPI_TRCOM1_HOST'),
         'base' => env('RAPIDAPI_TRCOM1_BASE'),
+    ],
+   
+    'rapidapi_cache' => [
+        'ttl' => (int) env('RAPIDAPI_CACHE_TTL_SECONDS', 900),
+        'geo_ttl' => (int) env('RAPIDAPI_GEOID_TTL_SECONDS', 86400),
     ],
 ];
 
