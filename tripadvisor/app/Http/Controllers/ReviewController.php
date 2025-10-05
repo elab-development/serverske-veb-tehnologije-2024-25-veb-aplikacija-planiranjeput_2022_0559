@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ReviewResource;
 use App\Models\Place;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,6 +25,28 @@ class ReviewController extends Controller
         $reviews = Review::query()
             ->where('place_id', $place->id)
             ->with(['user'])
+            ->latest()
+            ->paginate($perPage)
+            ->appends($request->query());
+
+        return ReviewResource::collection($reviews);
+    }
+
+     public function indexByUser(Request $request, User $user)
+    {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $validated = $request->validate([
+            'per_page' => ['sometimes', 'integer', 'min:1', 'max:100'],
+            'page' => ['sometimes', 'integer', 'min:1'],
+        ]);
+        $perPage = (int)($validated['per_page'] ?? 15);
+
+        $reviews = Review::query()
+            ->where('user_id', $user->id)
+            ->with(['place'])
             ->latest()
             ->paginate($perPage)
             ->appends($request->query());
