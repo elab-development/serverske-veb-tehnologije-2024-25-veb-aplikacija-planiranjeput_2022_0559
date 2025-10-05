@@ -47,4 +47,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::resource('reviews', ReviewController::class)
         ->only(['store', 'destroy']);
+
+    Route::get('/users/{user}/reviews', [ReviewController::class, 'indexByUser']);
 });
