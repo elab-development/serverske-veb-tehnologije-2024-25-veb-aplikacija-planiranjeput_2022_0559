@@ -19,9 +19,9 @@ class ReviewFactory extends Factory
         return [
             'user_id' => null,
             'place_id' => null,
-            'rating' => fake()->numberBetween(1, 5),            'rating' => fake()->numberBetween(1, 5),
-            'title' => fake()->boolean(70) ? fake()->sentence(6) : null,            'title' => fake()->boolean(70) ? fake()->sentence(6) : null,
-            'body' => fake()->boolean(80) ? fake()->paragraphs(2, true) : null,            'body' => fake()->boolean(80) ? fake()->paragraphs(2, true) : null,
+            'rating' => fake()->numberBetween(1, 5),           
+            'title' => fake()->boolean(70) ? fake()->sentence(6) : null, 
+            'body' => fake()->boolean(80) ? fake()->paragraphs(2, true) : null,       
         ];
     }
 }

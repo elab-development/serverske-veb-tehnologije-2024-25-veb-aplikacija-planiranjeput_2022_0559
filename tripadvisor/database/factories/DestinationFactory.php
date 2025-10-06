@@ -24,9 +24,9 @@ class DestinationFactory extends Factory
         return [
             'name' => $city,
             'country' => $country,
-            'region' => fake()->boolean(70) ? fake()->state() : null,            'region' => fake()->boolean(70) ? fake()->state() : null,
+            'region' => fake()->boolean(70) ? fake()->state() : null,            
             'slug' => $slug,
-            'description' => fake()->paragraphs(2, true),            'description' => fake()->paragraphs(2, true),
+            'description' => fake()->paragraphs(2, true),           
         ];
     }
 }

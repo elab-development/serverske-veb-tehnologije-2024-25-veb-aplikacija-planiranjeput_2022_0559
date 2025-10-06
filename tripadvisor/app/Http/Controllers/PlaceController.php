@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Http\Controllers;
@@ -71,7 +70,7 @@ class PlaceController extends Controller
     public function store(Request $request)
     {
         if (!Auth::check() || !in_array(Auth::user()->role, ['admin', 'moderator'], true)) {
-            return response()->json(['message' => 'Unauthorized'], 403);            return response()->json(['message' => 'Unauthorized'], 403);
+            return response()->json(['message' => 'Unauthorized'], 403);  
         }
 
         $validated = $request->validate([
@@ -95,7 +94,7 @@ class PlaceController extends Controller
 
         $place = Place::create($validated);
 
-        return response()->json([        return response()->json([
+        return response()->json([      
             'message' => 'Place created successfully',
             'place' => new PlaceResource($place->load('destination')->loadCount('reviews')),
         ], 201);
@@ -108,7 +107,7 @@ class PlaceController extends Controller
     {
         $place->load(['destination'])->loadCount('reviews');
 
-        return response()->json([        return response()->json([
+        return response()->json([      
             'place' => new PlaceResource($place),
         ]);
     }
@@ -127,7 +126,7 @@ class PlaceController extends Controller
     public function update(Request $request, Place $place)
     {
         if (!Auth::check() || !in_array(Auth::user()->role, ['admin', 'moderator'], true)) {
-            return response()->json(['message' => 'Unauthorized'], 403);            return response()->json(['message' => 'Unauthorized'], 403);
+            return response()->json(['message' => 'Unauthorized'], 403);         
         }
 
         $validated = $request->validate([
@@ -158,7 +157,7 @@ class PlaceController extends Controller
         }
 
         if (empty($validated)) {
-            return response()->json([            return response()->json([
+            return response()->json([       
                 'message' => 'Nothing to update',
                 'place' => new PlaceResource($place->load('destination')->loadCount('reviews')),
             ]);
@@ -166,7 +165,7 @@ class PlaceController extends Controller
 
         $place->update($validated);
 
-        return response()->json([        return response()->json([
+        return response()->json([     
             'message' => 'Place updated successfully',
             'place'   => new PlaceResource($place->load('destination')->loadCount('reviews')),
         ]);
@@ -178,11 +177,11 @@ class PlaceController extends Controller
     public function destroy(Place $place)
     {
         if (!Auth::check() || !in_array(Auth::user()->role, ['admin', 'moderator'], true)) {
-            return response()->json(['message' => 'Unauthorized'], 403);            return response()->json(['message' => 'Unauthorized'], 403);
+            return response()->json(['message' => 'Unauthorized'], 403);      
         }
 
         $place->delete();
 
-        return response()->json(['message' => 'Place deleted successfully']);        return response()->json(['message' => 'Place deleted successfully']);
+        return response()->json(['message' => 'Place deleted successfully']);       
     }
 }

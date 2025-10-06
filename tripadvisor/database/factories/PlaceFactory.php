@@ -30,11 +30,11 @@ class PlaceFactory extends Factory
             'destination_id' => null,
             'name' => $name,
             'type' => $type,
-            'slug' => Str::slug($name . '-' . fake()->unique()->numerify('####')),            'slug' => Str::slug($name . '-' . fake()->unique()->numerify('####')),
+            'slug' => Str::slug($name . '-' . fake()->unique()->numerify('####')),            
             'address' => fake()->address(),            'address' => fake()->address(),
             'latitude' => fake()->latitude(),            'latitude' => fake()->latitude(),
             'longitude' => fake()->longitude(),            'longitude' => fake()->longitude(),
-            'price_level' => fake()->optional(0.8)->numberBetween(0, 4),            'price_level' => fake()->optional(0.8)->numberBetween(0, 4),
+            'price_level' => fake()->optional(0.8)->numberBetween(0, 4),            
             'rating_avg' => 0.00,
             'reviews_count' => 0,
         ];

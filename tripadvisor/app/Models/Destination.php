@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Destination extends Model
 {
-    use HasFactory;    use HasFactory;
+    use HasFactory;    
 
     protected $fillable = [
         'name',

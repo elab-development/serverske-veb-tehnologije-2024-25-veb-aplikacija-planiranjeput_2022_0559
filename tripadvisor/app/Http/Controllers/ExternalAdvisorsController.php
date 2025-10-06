@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 class ExternalAdvisorsController extends Controller
+
 {
     protected array $config;
 
